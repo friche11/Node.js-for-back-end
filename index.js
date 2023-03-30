@@ -4,9 +4,15 @@ const app = express(); //Funcao cria uma instancia do framework Express pra vari
 
 app.get("/", function(req, res){
     res.send("Seja bem-vindo ao meu app!")
-});  //Criacao da rota principal da aplicacao
+})  //Criacao da rota principal da aplicacao
 
+app.get("/sobre", function(req, res){
+    res.send("Minha pagina sobre")
+})
 
+app.get("/blog", function(req, res){
+    res.send("Bem-vindo ao meu blog")
+})
 
 
 
