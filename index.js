@@ -2,6 +2,10 @@ const express = require("express"); //Importa o pacote Express para utilizar as 
 
 const app = express(); //Funcao cria uma instancia do framework Express pra variavel app.
 
+app.get("/", function(req, res){
+    res.send("Seja bem-vindo ao meu app!")
+});  //Criacao da rota principal da aplicacao
+
 
 
 
