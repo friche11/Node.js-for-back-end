@@ -5,3 +5,7 @@
 2- Protocolo HTTP: comunicação do cliente com o servidor. O protocolo do Node.js é limitado, por isso é importante utilizar o framework Express.
 
 3- Para instalar o express, basta ir na pasta no projeto pelo CMD e executar "npm install express --save". Antes de dar o comando o ideal é verificar se o npm esta instalado executando "npm -v".
+
+4- Para pegar parametros de rotas basta utilizar "req.params".
+
+5- Para automatizar o servidor basta instalar o Nodemon executando no CMD "npm install nodemon -g".
