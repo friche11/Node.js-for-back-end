@@ -9,3 +9,5 @@
 4- Para pegar parametros de rotas basta utilizar "req.params".
 
 5- Para automatizar o servidor basta instalar o Nodemon executando no CMD "npm install nodemon -g".
+
+6- Instalar sequelize para integrar Node.js com o MySQL. Entrar na pasta do projeto pelo CMD e executar "npm install --save sequelize".
