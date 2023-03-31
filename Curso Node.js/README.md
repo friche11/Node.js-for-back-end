@@ -10,4 +10,4 @@
 
 5- Para automatizar o servidor basta instalar o Nodemon executando no CMD "npm install nodemon -g".
 
-6- Instalar sequelize para integrar Node.js com o MySQL. Entrar na pasta do projeto pelo CMD e executar "npm install --save sequelize".
+6- Instalar sequelize para integrar Node.js com o MySQL. Entrar na pasta do projeto pelo CMD e executar "npm install --save sequelize". Após instalar o sequelize é preciso instalar o módulo do MySQL para integrar, executando "npm install --save mysql2"
