@@ -1,8 +1,4 @@
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize('cursonodejs', 'root', 'Ca008900', {
-    host: "localhost",
-    dialect: 'mysql'
-})
+/*
 
 sequelize.authenticate().then(function(){
     console.log("Conectado com sucesso")
@@ -20,10 +16,10 @@ const Postagem = sequelize.define('postagens', {
 })  //Criar modulo de postagem
 
 
-Postagem.create({
-    titulo: "Titulo qualquer",
-    conteudo: "sauhhuashusahusahuusahu"
-})
+//Postagem.create({
+    //titulo: "Titulo qualquer",
+    //conteudo: "sauhhuashusahusahuusahu"
+//})
 
 
 const Usuario = sequelize.define('usuarios',{
@@ -41,8 +37,17 @@ const Usuario = sequelize.define('usuarios',{
     }
 })
 
+Usuario.create({
+    nome: "Victor",
+    sobrenome: "Friche",
+    idade: 19,
+    email: "vicfriche@gmail.com"
+})
+
 //Usuario.sync({force:true})
 
 //Postagem.sync({
  //   force:true     //gerar a tabela do objeto postagem no banco de dados
 //})
+
+*/
