@@ -2,19 +2,24 @@ const express = require("express"); //Importa o pacote Express para utilizar as 
 
 const app = express(); //Funcao cria uma instancia do framework Express pra variavel app.
 
-const handlebars = require('express-handlebars')
+const handlebars = require('express-handlebars');
 
 
 // Config
     // Template Engine
-        app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+        app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
         app.set('view engine', 'handlebars')
-        
+
     //Conexao com banco de dados
     const Sequelize = require('sequelize')
     const sequelize = new Sequelize('cursonodejs', 'root', 'Ca008900', {
     host: "localhost",
     dialect: 'mysql'
+    })
+
+    //Rotas
+    app.get('/cad', function(req, res){
+        res.send('Rota de cadastro de posts')
     })
 
 
