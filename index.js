@@ -4,24 +4,34 @@ const app = express(); //Funcao cria uma instancia do framework Express pra vari
 
 const handlebars = require('express-handlebars');
 
+const Post = require('./models/Post')
 
 // Config
     // Template Engine
         app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
         app.set('view engine', 'handlebars')
 
-    //Conexao com banco de dados
-    const Sequelize = require('sequelize')
-    const sequelize = new Sequelize('cursonodejs', 'root', 'Ca008900', {
-    host: "localhost",
-    dialect: 'mysql'
-    })
+    //BodyParser
+    app.use(express.urlencoded({extended:false}))
+    app.use(express.json())
+
 
     //Rotas
     app.get('/cad', function(req, res){
-        res.send('Rota de cadastro de posts')
+        res.render('formulario.handlebars')
     })
 
+    app.post('/add', function(req, res){
+    Post.create({
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(function(){
+        res.send("Post criado com suucesso")
+    }).catch(function(){
+        res.send("Houve um erro: " +erro)
+    })
+       
+    })
 
 
 
