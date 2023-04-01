@@ -26,11 +26,18 @@ const Post = require('./models/Post')
         titulo: req.body.titulo,
         conteudo: req.body.conteudo
     }).then(function(){
-        res.send("Post criado com suucesso")
+        res.redirect('/')
     }).catch(function(){
         res.send("Houve um erro: " +erro)
     })
        
+    })
+
+    app.get('/', function(req, res){
+        Post.findAll({order: [['id', 'ASC']]}).then(function(posts){
+            res.render('home.handlebars', {posts: posts})
+        })
+        
     })
 
 
