@@ -17,3 +17,5 @@
 8- Projeto 1 representa tudo que foi feito integrado com MySQL, já o projeto 2 representa o que foi feito utilizando MongoDB.
 
 9- Para instalar o mongoose basta ir na pasta no projeto pelo CMD e executar "npm install --save mongoose".
+
+10- Instalar módulos "npm install --save express-session" e "npm install --save connect-flash".
