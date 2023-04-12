@@ -19,7 +19,7 @@ router.get('/posts', (req,res) => {
 
 router.get('/categorias', (req,res) => {
     Categoria.find().sort({date:'desc'}).lean().then((categorias) =>{
-        res.render("admin/categorias", {categorias: categorias})
+        res.render("./admin/categorias", {categorias: categorias})
     }).catch((err)=>{
         req.flash("error_msg", "Houve um erro ao listar as categorias")
         res.redirect("/admin")
@@ -27,10 +27,13 @@ router.get('/categorias', (req,res) => {
 })
 
 router.get("/postagens", (req,res)=>{
-    Postagem.find().populate("categorias").sort({data:"desc"}).then(({
-        
-    }))
-    res.render("./admin/postagens")
+    Postagem.find().lean().populate("categoria").sort({date:"desc"}).then((postagens)=>{
+        res.render("./admin/postagens", {postagens: postagens})
+    }).catch((err)=>{
+        req.flash("error_msg", "Houve um erro ao listar postagens")
+        res.redirect("/admin")
+    })
+
 })
 
 router.get('/categorias/add', (req, res)=>{
