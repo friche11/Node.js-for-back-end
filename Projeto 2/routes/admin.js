@@ -1,9 +1,14 @@
 const express = require("express")
 const router = express.Router()
 const mongoose = require("mongoose")
+
+// Carregar models
 require("../models/Categoria")
 const Categoria = mongoose.model("categorias")
+require("../models/Postagem")
+const Postagem = mongoose.model("postagens")
 
+// Rotas
 router.get('/', (req,res) => {
     res.render("./admin/index")
 })
@@ -21,8 +26,27 @@ router.get('/categorias', (req,res) => {
     })
 })
 
+router.get("/postagens", (req,res)=>{
+    Postagem.find().populate("categorias").sort({data:"desc"}).then(({
+        
+    }))
+    res.render("./admin/postagens")
+})
+
 router.get('/categorias/add', (req, res)=>{
     res.render("./admin/addcategoria")
+})
+
+router.get('/postagens/add', (req, res)=>{
+    Categoria.find().lean().then((categorias)=>{
+        res.render("./admin/addpostagem", {categorias: categorias})
+    }).catch((erro)=>{
+        req.flash("error_msg", "Houve um erro ao carregar formulario")
+        res.redirect("/admin")
+    })
+
+    
+  
 })
 
 router.get('/categorias/edit/:id', (req, res)=>{
@@ -114,6 +138,34 @@ router.post("/categorias/deletar", (req,res)=>{
         req.flash("error_msg", "Houve um erro ao deletar a categoria")
         res.redirect("/admin/categorias")
     })
+})
+
+router.post("/postagens/nova", (req,res) => {
+    var erros = []
+    if(req.body.categoria == '0'){
+        erros.push({texto: "Categoria invalida, registre uma categoria"})
+    }
+
+    if(erros.length > 0){
+        res.render("admin/addpostagem", {erros: erros})
+    }else{
+        const novaPostagem ={
+            titulo: req.body.titulo,
+            descricao: req.body.descricao,
+            conteudo: req.body.conteudo,
+            categoria: req.body.categoria,
+            slug: req.body.slug
+        }
+
+        new Postagem(novaPostagem).save().then(()=>{
+            req.flash("success_msg", "Postagem criada com sucesso")
+            res.redirect("/admin/postagens")
+        }).catch((erro)=>{
+            req.flash("error_msg", "Houve um erro durante a criacao de uma nova postagem")
+            res.redirect("/admin/postagens")
+        })
+    }
+
 })
 
 module.exports = router
