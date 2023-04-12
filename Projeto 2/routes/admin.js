@@ -76,9 +76,15 @@ router.post("/postagem/edit", (req,res)=>{
 
     })
 
-
-
-
+    router.get("/postagens/deletar/:id", (req,res)=>{
+        Postagem.deleteOne({_id: req.params.id}).then(()=>{
+            req.flash("success_msg", "Postagem deletada com sucesso")
+            res.redirect("/admin/postagens")
+        }).catch((erro)=>{
+            req.flash("error_msg", "Houve um erro ao deletar a postagem")
+            res.redirect("/admin/postagens")
+        })
+    })
 
 router.get('/categorias/add', (req, res)=>{
     res.render("./admin/addcategoria")
