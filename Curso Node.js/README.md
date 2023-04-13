@@ -19,3 +19,5 @@
 9- Para instalar o mongoose basta ir na pasta no projeto pelo CMD e executar "npm install --save mongoose".
 
 10- Instalar módulos "npm install --save express-session" e "npm install --save connect-flash".
+
+11- Usar biblioteca bcryptjs para gerar senhas em hash. Senhas em hash trazem segurança ao sistema. Para instalar a biblioteca, basta usar o comando no CMD "npm install --save bcryptjs".
