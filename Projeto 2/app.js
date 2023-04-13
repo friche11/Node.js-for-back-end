@@ -12,6 +12,7 @@
     const Postagem = mongoose.model("postagens")
     require("./models/Categoria")
     const Categoria = mongoose.model("categorias")
+    const usuarios = require("./routes/usuario")
 
 // Configurações
     // Sessao
@@ -70,7 +71,7 @@
                 Postagem.find({categoria: categoria._id}).lean().then((postagens)=>{
 
                     res.render("./categorias/postagens", {postagens: postagens, categoria: categoria})
-                    
+
                 }).catch((erro)=>{
                     req.flash("error_msg", "Houve um erro ao listar os posts")
                     res.redirect("/")
@@ -110,6 +111,7 @@
         res.send("Pagina de categorias")
     })
     app.use('/admin', admin)
+    app.use("/usuarios", usuarios)
 
 
 // Outros
