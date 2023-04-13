@@ -21,3 +21,5 @@
 10- Instalar módulos "npm install --save express-session" e "npm install --save connect-flash".
 
 11- Usar biblioteca bcryptjs para gerar senhas em hash. Senhas em hash trazem segurança ao sistema. Para instalar a biblioteca, basta usar o comando no CMD "npm install --save bcryptjs".
+
+12- Usar biblioteca passportjs para realizar autenticacao de login. O passportjs é um middleware e deve ser instalado usando o comando no CMD "npm install --save passport" e logo depois o comando "npm install --save passport-local".
