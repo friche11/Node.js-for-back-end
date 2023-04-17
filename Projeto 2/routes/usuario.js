@@ -90,6 +90,14 @@ passport.authenticate("local",{
 
 })
 
+router.get("/logout", (req,res,next)=>{
+    req.logout((err)=>{
+        if(err){return next(err)}    
+    req.flash('success_msg', "Deslogado com sucesso!")
+    res.redirect("/")
+    })
+})
+
 module.exports = router
 
 // Usuario comum: vicfriche@gmail.com  123456
