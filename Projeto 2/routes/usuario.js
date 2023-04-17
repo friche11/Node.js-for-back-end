@@ -44,7 +44,7 @@ router.post("/registro", (req,res)=>{
                  const novoUsuario = new Usuario({
                     nome: req.body.nome,
                     email: req.body.email,
-                    senha: req.body.senha
+                    senha: req.body.senha,
 
                  })
 
@@ -91,3 +91,6 @@ passport.authenticate("local",{
 })
 
 module.exports = router
+
+// Usuario comum: vicfriche@gmail.com  123456
+// Admin: vicsfp@gmail.com 
